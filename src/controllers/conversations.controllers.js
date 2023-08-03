@@ -7,9 +7,9 @@ const createConversation = async (req, res, next) => {
     // crear la conversacion 
     const conversation = await Conversations.create({createdBy});
     // conversation = { id, title, creattedBy, type, createdAt, updatedAt}
-    // tomar el id de la conversacion creada y agreagar a los participantes
+    // take the id of the created conversation and add the participants
     const { id } = conversation;
-    // agregar a los participantes en la tabla pivote 
+    // add the participants in the pivot table 
     /* await Participants.create({ userId: participant, conversationId: id }); */
     const participitantsArray = participants.map((participant) => ({
       userId: participant,
@@ -28,8 +28,8 @@ const createConversation = async (req, res, next) => {
 const deleteConversation = async (req, res, next) => {
   try {
     const { id } = req.params;
-    // antes de eliminar la conversacion 3
-    // elimino todos los registros en participantes que usen ese id
+    // before deleting the conversation
+    // I delete all the records in participants that use that id
     await Conversations.destroy({ where: { id } });
     res.status(204).end();
   } catch (error) {

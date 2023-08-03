@@ -11,8 +11,5 @@ router.post("/login", loginUserValidator, loginUser);
 
 router.get('/users', getAllUsers);
 
-router.get('/users', authenticate, (req, res) => {
-     res.send('users');
-});
 
 module.exports = router;

@@ -21,9 +21,9 @@ const loginUser = async (req, res, next) => {
 
         const user = await Users.findOne({ where: { email } });
 
-        // si el usuario existe devuelve un objeto 
-        // si no existe devuelve null 
-        // * truthy, un numero, texto, [], {}, true
+        // if the user exists, it returns an object 
+        // if it doesn't exist it returns null 
+        // * truthy, a number, text, [], {}, true
         // ! falsy, "", 0, false, null, undefined 
         if (!user) {
             return next({
@@ -32,10 +32,6 @@ const loginUser = async (req, res, next) => {
                 error: "incorrect email / password",
             });
         }
-
-        /* res.status(400).json({
-                message: "incorrect email / password",
-            }) */
 
         const validPassword = await bcrypt.compare(password, user.password);
 
@@ -47,7 +43,7 @@ const loginUser = async (req, res, next) => {
             });
         }
 
-        // generar un token
+        // generate token
         const {
             id,
             username,

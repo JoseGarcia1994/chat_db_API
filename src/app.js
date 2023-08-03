@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to my server');
 });
 
-// middleware de error
+// middleware error
 errorRoutes(app);
 
 app.listen(PORT, () => {
