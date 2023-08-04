@@ -7,7 +7,7 @@ const router = Router();
 
 router.post('/conversations', authenticate, createConversationValidator, createConversation);
 
-router.delete("/conversations/:id", deleteConversation);
+router.delete("/conversations/:id", authenticate, deleteConversation);
 
 router.get('/conversations/:id', getConversation)
 
